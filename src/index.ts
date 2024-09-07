@@ -8,7 +8,7 @@ import { pinecone } from './utils/pinecone-client';
 import { PINECONE_INDEX_NAME, PINECONE_NAME_SPACE } from './config/pinecone';
 
 const app = express();
-const port = 3000;
+const port: Number = process.env.PORT ? Number(process.env.PORT) : 5000;
 
 // middleware to parse JSON requests
 app.use(express.json());

@@ -3,7 +3,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.runtime = void 0;
 const express_1 = __importDefault(require("express"));
 const openai_1 = require("langchain/embeddings/openai");
 const pinecone_1 = require("langchain/vectorstores/pinecone");
@@ -11,8 +10,7 @@ const makechain_1 = require("./utils/makechain");
 const pinecone_client_1 = require("./utils/pinecone-client");
 const pinecone_2 = require("./config/pinecone");
 const app = (0, express_1.default)();
-const port = 3000;
-exports.runtime = 'edge';
+const port = process.env.PORT ? Number(process.env.PORT) : 5000;
 // middleware to parse JSON requests
 app.use(express_1.default.json());
 app.get('/', (req, res) => {
